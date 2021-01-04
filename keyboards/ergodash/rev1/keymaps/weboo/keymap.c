@@ -233,6 +233,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
         if (timer_elapsed(key_timer) < TAPPING_TERM) {
           nicola_off();
+        } else {
+          tap_code(KC_LSFT);
         }
         unregister_code(KC_LALT);
       }
@@ -246,6 +248,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
         if (timer_elapsed(key_timer) < TAPPING_TERM) {
           nicola_on();
+        } else {
+          tap_code(KC_LSFT);
         }
         unregister_code(KC_RALT);
       }
