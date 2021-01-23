@@ -234,7 +234,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     case KANA:
-      // 長押しでAlt、単押しでAlt+F14かつNICOLAレイヤーから戻る
+      // 長押しでAlt、単押しでAlt+F14かつNICOLAレイヤーに切り替え
       // Alt+F14を変換キーに割り当てること
       if (record->event.pressed) {
         key_timer = timer_read();
@@ -251,7 +251,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     case EISU:
-      // 長押しでAlt、単押しでAlt+F15かつNICOLAレイヤーに切り替え
+      // 長押しでAlt、単押しでAlt+F15かつNICOLAレイヤーから戻る
       // Alt+F15を無変換キーに割り当てること
       if (record->event.pressed) {
         key_timer = timer_read();
