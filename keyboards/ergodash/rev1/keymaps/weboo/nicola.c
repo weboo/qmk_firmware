@@ -163,7 +163,7 @@ const PROGMEM nicola_keymap ngmap[] = {
 
   // Shift and Henkan/Muhenkan
   // {.key = B_SHFTL           , .kana = SS_TAP(X_INT5)},
-  {.key = B_SHFTR           , .kana = SS_TAP(X_INT4)},
+  // {.key = B_SHFTR           , .kana = SS_TAP(X_INT4)},
 
   // 左シフト
   {.key = B_SHFTL|B_Q       , .kana = "la"},
@@ -249,7 +249,6 @@ void nicola_on(void) {
 
   //tap_code(KC_LANG1); // Mac
   //tap_code(KC_HENK); // Win
-  tap_code(KC_F14);
 }
 
 void nicola_off(void) {
@@ -260,7 +259,6 @@ void nicola_off(void) {
 
   //tap_code(KC_LANG2); // Mac
   //tap_code(KC_MHEN); // Win
-  tap_code(KC_F15);
 }
 
 // 親指シフトの状態

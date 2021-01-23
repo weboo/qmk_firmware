@@ -233,34 +233,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       return false;
-    case EISU:
-      // 長押しでAlt、単押しでAlt+F14かつNICOLAレイヤーに切り替え
-      // Alt+F14を変換に割り当てること
-      if (record->event.pressed) {
-        key_timer = timer_read();
-        register_code(KC_LALT);
-      } else {
-        if (timer_elapsed(key_timer) < TAPPING_TERM) {
-          nicola_off();
-        } else {
-          tap_code(KC_LSFT);
-        }
-        unregister_code(KC_LALT);
-      }
-      return false;
     case KANA:
-      // 長押しでAlt、単押しでAlt+F15かつNICOLAレイヤーから戻る
-      // Alt+F15を無変換に割り当てること
+      // 長押しでAlt、単押しでAlt+F14かつNICOLAレイヤーから戻る
+      // Alt+F14を変換キーに割り当てること
       if (record->event.pressed) {
         key_timer = timer_read();
         register_code(KC_RALT);
       } else {
         if (timer_elapsed(key_timer) < TAPPING_TERM) {
           nicola_on();
+          tap_code(KC_F14);
         } else {
+          // メニューにフォーカスが当たるのを防ぐ
           tap_code(KC_LSFT);
         }
         unregister_code(KC_RALT);
+      }
+      return false;
+    case EISU:
+      // 長押しでAlt、単押しでAlt+F15かつNICOLAレイヤーに切り替え
+      // Alt+F15を無変換キーに割り当てること
+      if (record->event.pressed) {
+        key_timer = timer_read();
+        register_code(KC_LALT);
+      } else {
+        if (timer_elapsed(key_timer) < TAPPING_TERM) {
+          nicola_off();
+          tap_code(KC_F15);
+        } else {
+          // メニューにフォーカスが当たるのを防ぐ
+          tap_code(KC_LSFT);
+        }
+        unregister_code(KC_LALT);
       }
       return false;
   }
